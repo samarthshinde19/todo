@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DELETE ITEM</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ok.css' %}"  > 
+    <link rel="stylesheet" href="{% static 'ok.css' %}"  >  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet"> 
+</head>
+<body >
+<div class="container">
+    <div class="header-bar1">
+        <a href="{% url 'tasks' %}">&#8592;BACK</a>
+    </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card">
+<form method="POST" action="">
+    {% csrf_token%}
+    <p> are you 100% sure you want to deletew this item? "{{task}}"</p>
+    <input class="button" type="submit" value="DELETE" id="bu">
+
+
+
+
+
+
+
+
+
+</div>
+</form>
+</div>
+</body>

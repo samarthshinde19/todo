@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DISPLAY ITEM</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ok.css' %}"  >
+    <link rel="stylesheet" href="{% static 'ok.css' %}"  >  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">  
+</head>
+<body> 
+<div class="container">    
+
+
+
+
+
+
+
+
+
+<div class="header-bar1">
+    <div class="header-bar2">
+        <h1> HELLO {{request.user|title}} </h1>
+        <h3 style="margin:0">You have<i>{{count}}</i>incomplete items</h3>
+    </div>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="under">LOGOUT</a>
+    {% else %}
+    <a href="{% url 'login'%}"> LOGIN</a>
+    {% endif %} 
+
+</div>
+<div id="searchwrap">
+    <form method="GET" style="margin-top:20px;display:flex;">
+        <input type="text" name="search-area">
+        <input  class="button" type ="submit" value="SEARCH">
+    </form>
+    <a id="add" href="{% url 'task-create' %}">&#x2b;</a>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="wrapper">
+    {% for task in tasks %}  
+        <div class="loop">
+            {% if task.complete %}
+                <div class="title">
+                    <div class="icon"></div>
+                    <i><s><a href="{% url 'task-update' task.id%}">{{task}}</a></s></i>
+                </div>
+                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            {% else %} 
+            <div class="title">
+                <div class="incomplete-icon"></div>
+                <a href="{% url 'task-update' task.id%}">{{task}}</a>
+            </div>   
+            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            {% endif %}        
+         
+        </div>    
+
+        {% empty %}
+        <h3>no items in list</h3>
+    {% endfor %}
+
+
+
+
+
+
+
+</div>    
+
+
+
+
+   
+
+ 
+</div>
+</body>
